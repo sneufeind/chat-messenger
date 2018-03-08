@@ -1,0 +1,16 @@
+kafka:
+  consumer:
+    group-id: ${random.uuid}
+    auto-offset-reset: earliest
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+
+my:
+  chat:
+    topic:
+      message:
+        consumer: test.chat.message.consumer
+        producer: test.chat.message.producer
+      onlinestatus:
+        consumer: test.user.online.status.changed
+        producer: test.user.online.status.changed
+    user: ${chat.user:anonymous}

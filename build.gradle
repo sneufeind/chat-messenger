@@ -1,0 +1,49 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+group 'my.chat.messenger'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springKafkaVersion = '1.2.3.RELEASE'
+    vaadinVersion = '8.3.0'
+}
+dependencyManagement {
+    imports {
+        mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+    }
+}
+
+dependencies {
+    compile('com.vaadin:vaadin-push')
+    compile('com.vaadin:vaadin-spring-boot-starter')
+    compile('org.apache.commons:commons-lang3:3.4')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile("org.springframework.kafka:spring-kafka:${springKafkaVersion}")
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.springframework.kafka:spring-kafka-test:${springKafkaVersion}")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}

@@ -1,0 +1,35 @@
+server:
+  port: 8080
+management:
+  port: 9000
+  security:
+    enabled: true
+vaadin:
+  servlet:
+    productionMode: true
+#debug: true
+logging:
+  level:
+    root: INFO
+    com:
+      vaadin: INFO
+    org:
+      apache: INFO
+      hibernate: INFO
+      springframework: INFO
+kafka:
+  consumer:
+    group-id: ${random.uuid}
+    auto-offset-reset: earliest
+  bootstrap-servers: localhost:9092
+
+my:
+  chat:
+    topic:
+      message:
+        consumer: chat.message.12345
+        producer: chat.message.12345
+      onlinestatus:
+        consumer: user.online.status.changed.12345
+        producer: user.online.status.changed.12345
+    user: ${chat.user:anonymous}
