@@ -11,7 +11,7 @@ buildscript {
 }
 
 group 'my.chat.messenger'
-version '1.0.0-SNAPSHOT'
+version ''
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
