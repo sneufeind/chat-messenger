@@ -21,7 +21,7 @@ kafka:
   consumer:
     group-id: ${random.uuid}
     auto-offset-reset: earliest
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: ${kafka.server:localhost:9092}
 
 my:
   chat:
